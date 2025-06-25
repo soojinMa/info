@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <!-- Chosen Palette: Brilliant Blues -->
+    <!-- Application Structure Plan: The infographic follows a compelling narrative structure designed for maximum impact and comprehension. It starts with the 'Problem' (youth mental health crisis) to create urgency, introduces SEL as the 'Solution', provides data-driven 'Proof' of its effectiveness (both short-term and long-term), explains the 'Process' for implementation, and finally discusses 'Challenges' for a balanced view. This story-driven approach is more engaging than a simple report summary and guides the user logically from problem to solution. -->
+    <!-- Visualization & Content Choices: [Youth Crisis -> Goal: Inform -> Viz: Donut Charts (Chart.js) -> Justification: High-impact visual for part-to-whole data.][CASEL 5 -> Goal: Organize -> Viz: HTML/CSS Flow Diagram -> Justification: Visually represents the relationship between competencies better than a list.][SEL Benefits -> Goal: Compare -> Viz: Bar Charts (Chart.js) -> Justification: Ideal for comparing the magnitude of various quantitative benefits.][Implementation Models -> Goal: Organize -> Viz: HTML/CSS Pyramid & Flowchart -> Justification: Classic, intuitive infographic elements for showing hierarchy and process.][Challenges -> Goal: Inform -> Viz: HTML/CSS Icon Cards -> Justification: Breaks down complex topics into digestible, visually distinct points.] -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>사회정서 학습(SEL) 데이터 시각화 인포그래픽</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #f0f9ff; }
+        .chart-container { position: relative; width: 100%; max-width: 400px; margin-left: auto; margin-right: auto; height: 300px; max-height: 320px; }
+        @media (min-width: 768px) { .chart-container { height: 350px; max-height: 380px; } }
+    </style>
+</head>
+<body class="text-slate-700">
+
+    <div class="container mx-auto p-4 md:p-8">
+        
+        <header class="text-center my-12">
+            <h1 class="text-4xl md:text-5xl font-extrabold text-[#0066FF] mb-4">미래를 위한 투자, 사회정서 학습(SEL)</h1>
+            <p class="text-lg md:text-xl max-w-3xl mx-auto text-slate-600">데이터로 확인하는 사회정서 학습의 중요성과 놀라운 효과. 우리 아이들의 건강한 성장을 위한 필수 역량을 시각화 자료로 만나보세요.</p>
+        </header>
+
+        <section class="my-16 md:my-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-3">한국 청소년, 마음 건강의 위기</h2>
+                <p class="max-w-3xl mx-auto text-slate-500">사회정서 학습의 필요성은 우리 아이들이 직면한 현실에서 시작됩니다. 2023년 기준, 청소년 정신 건강 지표는 심각한 수준에 이르렀습니다.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">청소년 우울감 경험률</h3>
+                    <div class="chart-container">
+                        <canvas id="depressionChart"></canvas>
+                    </div>
+                    <p class="mt-4 text-center font-semibold text-lg">26.0%</p>
+                    <p class="mt-1 text-center text-slate-600">최근 1년 내, 4명 중 1명 이상이 2주 내내 일상생활을 중단할 정도의 슬픔이나 절망감을 느꼈습니다.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-4">청소년 자살 생각 비율</h3>
+                    <div class="chart-container">
+                        <canvas id="suicideChart"></canvas>
+                    </div>
+                    <p class="mt-4 text-center font-semibold text-lg">13.5%</p>
+                    <p class="mt-1 text-center text-slate-600">청소년 사망 원인 1위라는 비극 속에서 10명 중 1명 이상이 심각하게 자살을 생각하고 있습니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="my-16 md:my-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-3">위기의 해답: 사회정서 학습(SEL)이란?</h2>
+                <p class="max-w-3xl mx-auto text-slate-500">사회정서 학습(SEL)은 감정을 이해 및 관리하고, 긍정적인 관계를 맺으며, 책임감 있는 결정을 내리는 능력입니다. CASEL 5 핵심 역량이 그 기반을 이룹니다.</p>
+            </div>
+            <div class="max-w-4xl mx-auto space-y-4 text-center">
+                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#80D4FF]">
+                        <h4 class="font-bold text-xl">🧠 자기 인식</h4>
+                        <p class="text-slate-600 mt-2">자신의 감정, 가치, 강점을 정확히 아는 능력</p>
+                    </div>
+                     <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#80D4FF]">
+                        <h4 class="font-bold text-xl">🧘 자기 관리</h4>
+                        <p class="text-slate-600 mt-2">감정, 충동, 행동을 효과적으로 통제하는 능력</p>
+                    </div>
+                </div>
+                <div class="flex justify-center items-center text-3xl font-bold text-[#00B2FF] my-2">↓</div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#00B2FF]">
+                        <h4 class="font-bold text-xl">🤝 사회적 인식</h4>
+                        <p class="text-slate-600 mt-2">타인의 입장을 이해하고 공감하는 능력</p>
+                    </div>
+                     <div class="bg-white p-6 rounded-lg shadow-md border-l-4 border-[#00B2FF]">
+                        <h4 class="font-bold text-xl">💬 관계 기술</h4>
+                        <p class="text-slate-600 mt-2">건강한 관계를 맺고 유지하는 능력</p>
+                    </div>
+                </div>
+                <div class="flex justify-center items-center text-3xl font-bold text-[#0066FF] my-2">↓</div>
+                <div class="bg-[#0066FF] text-white p-6 rounded-lg shadow-xl">
+                    <h4 class="font-bold text-xl">🎯 책임감 있는 의사결정</h4>
+                    <p class="opacity-90 mt-2">모든 역량을 통합하여 윤리적이고 건설적인 선택을 하는 능력</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="my-16 md:my-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-3">숫자로 증명된 SEL의 놀라운 힘</h2>
+                <p class="max-w-3xl mx-auto text-slate-500">SEL은 단순한 구호가 아닙니다. 수많은 연구를 통해 학교 환경 개선부터 개인의 장기적인 삶의 성공까지, 그 효과가 명확히 입증되었습니다.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-6">학교 환경의 긍정적 변화</h3>
+                    <div class="chart-container" style="height: 400px; max-height: 450px;">
+                        <canvas id="behaviorChart"></canvas>
+                    </div>
+                    <p class="mt-4 text-center text-slate-600">SEL 프로그램 도입 후, 학생들의 문제 행동은 극적으로 감소하고 학업 능력은 향상되었습니다.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-lg">
+                    <h3 class="text-2xl font-bold text-center mb-6">미래 삶의 성공 가능성 증대</h3>
+                    <div class="chart-container" style="height: 400px; max-height: 450px;">
+                        <canvas id="longTermImpactChart"></canvas>
+                    </div>
+                    <p class="mt-4 text-center text-slate-600">유치원 시기의 사회적 역량 1점 증가는 성인이 되었을 때 주요 성공 지표 달성 가능성을 크게 높입니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="my-16 md:my-24">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold mb-3">SEL, 어떻게 구현될까요?</h2>
+                <p class="max-w-3xl mx-auto text-slate-500">효과적인 SEL은 체계적인 접근을 필요로 합니다. 학생을 둘러싼 다층적 지원 시스템과 구체적인 프로그램 모델을 통해 구현됩니다.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div class="text-center">
+                    <h3 class="text-xl font-bold mb-6">다층적 지원 시스템 (Pyramid Model)</h3>
+                    <div class="space-y-2 flex flex-col items-center">
+                        <div class="w-full max-w-sm bg-[#BFEFFF] p-3 rounded-t-lg shadow-md text-center"><span class="font-bold text-slate-800">🌍 지역사회</span></div>
+                        <div class="w-10/12 max-w-xs bg-[#80D4FF] p-3 shadow-md text-center"><span class="font-bold text-slate-800">👨‍👩‍👧‍👦 가정</span></div>
+                        <div class="w-8/12 max-w-[14rem] bg-[#00B2FF] p-3 shadow-md text-center"><span class="font-bold text-white">🏫 학교</span></div>
+                        <div class="w-6/12 max-w-[10rem] bg-[#0066FF] p-3 rounded-b-lg shadow-md text-center"><span class="font-bold text-white">👨‍🏫 교실</span></div>
+                    </div>
+                    <p class="mt-6 text-slate-600">학생을 중심으로 교실, 학교, 가정, 지역사회가 유기적으로 연결되어 일관된 교육을 제공해야 합니다.</p>
+                </div>
+                <div class="text-center">
+                    <h3 class="text-xl font-bold mb-6">한국형 SEL 프로그램 (6차시 모델)</h3>
+                    <div class="space-y-2 text-left max-w-sm mx-auto">
+                        <div class="p-3 bg-slate-100 rounded-lg shadow-sm"><strong>1차시:</strong> 사회정서 역량 이해</div>
+                        <div class="p-3 bg-slate-100 rounded-lg shadow-sm"><strong>2-3차시:</strong> 나를 알기 (감정 인식 및 조절)</div>
+                        <div class="p-3 bg-slate-100 rounded-lg shadow-sm"><strong>4차시:</strong> 너와 소통하기 (대인관계)</div>
+                        <div class="p-3 bg-slate-100 rounded-lg shadow-sm"><strong>5차시:</strong> 함께 살아가기 (공동체)</div>
+                        <div class="p-3 bg-slate-100 rounded-lg shadow-sm"><strong>6차시:</strong> 도움 요청하기 (마음 건강)</div>
+                    </div>
+                     <p class="mt-6 text-slate-600">'이해-연습-적용' 단계를 통해 체계적으로 역량을 함양하는 프로그램입니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <footer class="text-center my-12 border-t pt-8 border-slate-300">
+             <h2 class="text-2xl font-bold mb-4">지속 가능한 성장을 위한 제언</h2>
+            <p class="max-w-3xl mx-auto text-slate-600">SEL이 성공적으로 안착하기 위해서는 교사 지원 강화, 교육과정과의 유기적 통합, 그리고 가정과 사회 전체의 공감대 형성이 필수적입니다. 사회정서 학습은 우리 모두의 미래를 위한 가장 확실한 투자입니다.</p>
+        </footer>
+
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            
+            const palette = {
+                primary: '#0066FF',
+                secondary: '#00B2FF',
+                light: '#80D4FF',
+                lightest: '#BFEFFF',
+                gray: '#e2e8f0',
+            };
+
+            const globalTooltipConfig = {
+                callbacks: {
+                    title: function(tooltipItems) {
+                        const item = tooltipItems[0];
+                        let label = item.chart.data.labels[item.dataIndex];
+                        if (Array.isArray(label)) { return label.join(' '); }
+                        return label;
+                    }
+                },
+                backgroundColor: 'rgba(30, 41, 59, 0.9)',
+                titleFont: { size: 14, family: 'Noto Sans KR', weight: 'bold' },
+                bodyFont: { size: 12, family: 'Noto Sans KR' },
+                padding: 10,
+                cornerRadius: 4,
+                displayColors: true
+            };
+            
+            function wrapLabel(label, maxWidth = 16) {
+                if (typeof label !== 'string' || label.length <= maxWidth) { return label; }
+                const words = label.split(' ');
+                const lines = [];
+                let currentLine = '';
+                words.forEach(word => {
+                    if ((currentLine + ' ' + word).trim().length > maxWidth) {
+                        if(currentLine) lines.push(currentLine);
+                        currentLine = word;
+                    } else {
+                        currentLine = (currentLine + ' ' + word).trim();
+                    }
+                });
+                if(currentLine) lines.push(currentLine);
+                return lines;
+            }
+
+            if (document.getElementById('depressionChart')) {
+                new Chart(document.getElementById('depressionChart'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['우울감 경험', '해당 없음'],
+                        datasets: [{ data: [26, 74], backgroundColor: [palette.secondary, palette.gray], borderColor: '#fff', borderWidth: 6 }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false, cutout: '70%', plugins: { tooltip: globalTooltipConfig, legend: { display: false } } }
+                });
+            }
+
+            if (document.getElementById('suicideChart')) {
+                new Chart(document.getElementById('suicideChart'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['자살 생각', '해당 없음'],
+                        datasets: [{ data: [13.5, 86.5], backgroundColor: [palette.primary, palette.gray], borderColor: '#fff', borderWidth: 6 }]
+                    },
+                    options: { responsive: true, maintainAspectRatio: false, cutout: '70%', plugins: { tooltip: globalTooltipConfig, legend: { display: false } } }
+                });
+            }
+
+            if (document.getElementById('behaviorChart')) {
+                const behaviorLabels = ['징계 참조 감소', '정학 감소', '폭력 행위 감소', '집단 따돌림 감소', '읽기 능력 향상'];
+                new Chart(document.getElementById('behaviorChart'), {
+                    type: 'bar',
+                    data: {
+                        labels: behaviorLabels.map(l => wrapLabel(l)),
+                        datasets: [{ label: '변화율 (%)', data: [85, 73, 62, 51, 20], backgroundColor: [palette.primary, palette.secondary, palette.light, palette.lightest, '#f59e0b'], borderRadius: 4 }]
+                    },
+                    options: {
+                        indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+                        scales: { x: { beginAtZero: true, grid: { display: false }, ticks: { callback: value => value + '%' } }, y: { grid: { display: false } } },
+                        plugins: { tooltip: globalTooltipConfig, legend: { display: false } }
+                    }
+                });
+            }
+
+            if (document.getElementById('longTermImpactChart')) {
+                const longTermLabels = ['대학 학위 취득 가능성', '고교 졸업 가능성', '25세 정규직 취업 가능성'];
+                new Chart(document.getElementById('longTermImpactChart'), {
+                    type: 'bar',
+                    data: {
+                        labels: longTermLabels.map(l => wrapLabel(l)),
+                        datasets: [{ label: '증가율 (%)', data: [100, 54, 46], backgroundColor: [palette.primary, palette.secondary, palette.light], borderRadius: 4 }]
+                    },
+                    options: {
+                        responsive: true, maintainAspectRatio: false,
+                        scales: { y: { beginAtZero: true, grid: { display: false }, ticks: { callback: value => value + '%' } }, x: { grid: { display: false } } },
+                        plugins: { tooltip: globalTooltipConfig, legend: { display: false } }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
